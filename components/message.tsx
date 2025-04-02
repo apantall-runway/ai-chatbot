@@ -11,6 +11,7 @@ import { Markdown } from './markdown';
 import { MessageActions } from './message-actions';
 import { PreviewAttachment } from './preview-attachment';
 import { Weather } from './weather';
+import { TavilySearchResults } from './tavily-search-results';
 import equal from 'fast-deep-equal';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
@@ -18,7 +19,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { MessageEditor } from './message-editor';
 import { DocumentPreview } from './document-preview';
 import { MessageReasoning } from './message-reasoning';
-import { UseChatHelpers } from '@ai-sdk/react';
+import type { UseChatHelpers } from '@ai-sdk/react';
 
 const PurePreviewMessage = ({
   chatId,
@@ -176,6 +177,13 @@ const PurePreviewMessage = ({
                           args={args}
                           isReadonly={isReadonly}
                         />
+                      ) : toolName === 'tavilySearch' ? (
+                        <div className="p-3 border rounded-md bg-muted/50 my-2">
+                          <p className="text-sm flex items-center gap-2 text-muted-foreground">
+                            <span className="animate-spin">⟳</span> Searching
+                            the web...
+                          </p>
+                        </div>
                       ) : null}
                     </div>
                   );
@@ -204,6 +212,12 @@ const PurePreviewMessage = ({
                           type="request-suggestions"
                           result={result}
                           isReadonly={isReadonly}
+                        />
+                      ) : toolName === 'tavilySearch' ? (
+                        <TavilySearchResults
+                          toolCallId={toolCallId}
+                          initialResult={result}
+                          chatId={chatId}
                         />
                       ) : (
                         <pre>{JSON.stringify(result, null, 2)}</pre>

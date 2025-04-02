@@ -3,8 +3,21 @@
 import { useChat } from '@ai-sdk/react';
 import { useEffect, useRef } from 'react';
 import { artifactDefinitions, ArtifactKind } from './artifact';
-import { Suggestion } from '@/lib/db/schema';
+import type { Suggestion } from '@/lib/db/schema';
 import { initialArtifactData, useArtifact } from '@/hooks/use-artifact';
+
+export type TavilySearchStatus =
+  | 'Searching...'
+  | 'Summarizing...'
+  | 'Complete'
+  | 'No results found.'
+  | 'Error occurred during search.';
+export type TavilySource = {
+  title: string;
+  url: string;
+  content?: string;
+  score?: number;
+};
 
 export type DataStreamDelta = {
   type:
@@ -17,8 +30,21 @@ export type DataStreamDelta = {
     | 'suggestion'
     | 'clear'
     | 'finish'
-    | 'kind';
-  content: string | Suggestion;
+    | 'kind'
+    | 'tavily-search-status' // Overall status updates
+    | 'tavily-search-sources' // Batch of sources found
+    | 'tavily-summary-delta'; // Incremental summary text
+  content:
+    | string
+    | Suggestion
+    | {
+        toolCallId: string;
+        status?: TavilySearchStatus;
+        sources?: TavilySource[];
+        delta?: string; // For summary delta
+        summary?: string; // For final summary
+        error?: string;
+      };
 };
 
 export function DataStreamHandler({ id }: { id: string }) {
