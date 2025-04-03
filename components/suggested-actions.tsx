@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { memo } from 'react';
 import { UseChatHelpers } from '@ai-sdk/react';
+import { cn } from '@/lib/utils';
 
 interface SuggestedActionsProps {
   chatId: string;
@@ -49,16 +50,19 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
           className={index > 1 ? 'hidden sm:block' : 'block'}
         >
           <Button
-            variant="ghost"
+            variant="ghost" // Keep ghost for background/hover behavior
             onClick={async () => {
               window.history.replaceState({}, '', `/chat/${chatId}`);
-
               append({
                 role: 'user',
                 content: suggestedAction.action,
               });
             }}
-            className="text-left border rounded-xl px-4 py-3.5 text-sm flex-1 gap-1 sm:flex-col w-full h-auto justify-start items-start"
+            // Apply the sharp, bordered style directly
+            className={cn(
+              'text-left border-2 border-input px-4 py-3.5 text-sm flex-1 gap-1 sm:flex-col w-full h-auto justify-start items-start',
+              'rounded-none' // Ensure sharp corners
+            )}
           >
             <span className="font-medium">{suggestedAction.title}</span>
             <span className="text-muted-foreground">
