@@ -339,12 +339,14 @@ function PureSendButton({
   return (
     <Button
       data-testid="send-button"
-      className="rounded-full p-1.5 h-fit border dark:border-zinc-600"
+      className="p-1.5 h-fit"
+      variant="brutalist"
       onClick={(event) => {
         event.preventDefault();
         submitForm();
       }}
       disabled={input.length === 0 || uploadQueue.length > 0}
+      data-text="SEND"
     >
       <ArrowUpIcon size={14} />
     </Button>

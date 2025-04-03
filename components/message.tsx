@@ -120,9 +120,12 @@ const PurePreviewMessage = ({
                       <div
                         data-testid="message-content"
                         className={cn('flex flex-col gap-4', {
-                          'bg-primary text-primary-foreground px-3 py-2 rounded-xl':
+                          'bg-primary text-primary-foreground px-3 py-2 rounded-xl font-rubik-mono text-sm':
                             message.role === 'user',
+                          'font-unbounded':
+                            message.role === 'assistant',
                         })}
+                        data-text={part.text}
                       >
                         <Markdown>{part.text}</Markdown>
                       </div>

@@ -85,8 +85,9 @@ const PureChatItem = ({
       <DropdownMenu modal={true}>
         <DropdownMenuTrigger asChild>
           <SidebarMenuAction
-            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground mr-0.5"
+            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground mr-0.5 glitch-on-hover"
             showOnHover={!isActive}
+            data-text="More"
           >
             <MoreHorizontalIcon />
             <span className="sr-only">More</span>
@@ -292,7 +293,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
                   <>
                     {groupedChats.today.length > 0 && (
                       <>
-                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50">
+                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50 font-unbounded uppercase tracking-wider">
                           Today
                         </div>
                         {groupedChats.today.map((chat) => (
@@ -312,7 +313,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
 
                     {groupedChats.yesterday.length > 0 && (
                       <>
-                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6">
+                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6 font-unbounded uppercase tracking-wider">
                           Yesterday
                         </div>
                         {groupedChats.yesterday.map((chat) => (
@@ -332,7 +333,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
 
                     {groupedChats.lastWeek.length > 0 && (
                       <>
-                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6">
+                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6 font-unbounded uppercase tracking-wider">
                           Last 7 days
                         </div>
                         {groupedChats.lastWeek.map((chat) => (
@@ -352,7 +353,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
 
                     {groupedChats.lastMonth.length > 0 && (
                       <>
-                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6">
+                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6 font-unbounded uppercase tracking-wider">
                           Last 30 days
                         </div>
                         {groupedChats.lastMonth.map((chat) => (
@@ -372,7 +373,7 @@ export function SidebarHistory({ user }: { user: User | undefined }) {
 
                     {groupedChats.older.length > 0 && (
                       <>
-                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6">
+                        <div className="px-2 py-1 text-xs text-sidebar-foreground/50 mt-6 font-unbounded uppercase tracking-wider">
                           Older
                         </div>
                         {groupedChats.older.map((chat) => (

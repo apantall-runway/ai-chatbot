@@ -18,6 +18,8 @@ const buttonVariants = cva(
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
+        brutalist: 
+          'rounded-none border-2 border-black bg-transparent font-rubik-mono uppercase tracking-wider hover:bg-black hover:text-white transition-colors duration-150 glitch-on-hover',
       },
       size: {
         default: 'h-10 px-4 py-2',

@@ -70,11 +70,11 @@ export function VisibilitySelector({
         )}
       >
         <Button
-          variant="outline"
+          variant="brutalist"
           className="hidden md:flex md:px-2 md:h-[34px]"
         >
           {selectedVisibility?.icon}
-          {selectedVisibility?.label}
+          <span className="font-rubik-mono uppercase text-sm">{selectedVisibility?.label}</span>
           <ChevronDownIcon />
         </Button>
       </DropdownMenuTrigger>
@@ -91,9 +91,9 @@ export function VisibilitySelector({
             data-active={visibility.id === visibilityType}
           >
             <div className="flex flex-col gap-1 items-start">
-              {visibility.label}
+              <div className="font-rubik-mono text-sm uppercase">{visibility.label}</div>
               {visibility.description && (
-                <div className="text-xs text-muted-foreground">
+                <div className="text-xs text-muted-foreground font-unbounded tracking-tight">
                   {visibility.description}
                 </div>
               )}

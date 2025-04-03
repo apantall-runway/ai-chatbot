@@ -41,7 +41,7 @@ export function ModelSelector({
       >
         <Button
           data-testid="model-selector"
-          variant="outline"
+          variant="brutalist"
           className="md:px-2 md:h-[34px]"
         >
           {selectedChatModel?.name}
@@ -72,8 +72,8 @@ export function ModelSelector({
                 className="gap-4 group/item flex flex-row justify-between items-center w-full"
               >
                 <div className="flex flex-col gap-1 items-start">
-                  <div>{chatModel.name}</div>
-                  <div className="text-xs text-muted-foreground">
+                  <div className="font-rubik-mono text-sm uppercase">{chatModel.name}</div>
+                  <div className="text-xs text-muted-foreground font-unbounded tracking-tight">
                     {chatModel.description}
                   </div>
                 </div>

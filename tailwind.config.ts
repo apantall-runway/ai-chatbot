@@ -12,6 +12,8 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-geist)'],
         mono: ['var(--font-geist-mono)'],
+        'rubik-mono': ['var(--font-rubik-mono)'],
+        unbounded: ['var(--font-unbounded)'],
       },
       screens: {
         'toast-mobile': '600px',
